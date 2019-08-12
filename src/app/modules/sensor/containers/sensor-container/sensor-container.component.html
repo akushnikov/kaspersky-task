@@ -1,0 +1,5 @@
+<ng-container *ngIf="entity$ | async as entity">
+  <h1 class="text-center">Sensor: {{entity.key}}</h1>
+  <hr class="divider">
+  <app-sensor-form [entity]="entity" (back)="onBack()"></app-sensor-form>
+</ng-container>

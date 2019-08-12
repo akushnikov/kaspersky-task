@@ -1,0 +1,24 @@
+<h1 class="text-center">Sensors</h1>
+<form class="controls" [formGroup]="form">
+  <div class="btn-group btn-group-toggle" ngbRadioGroup formControlName="mode">
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" value="auto"> Auto-polling
+    </label>
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" value="manual"> Manual
+    </label>
+  </div>
+  <button *ngIf="(mode$ | async) === 'manual'"
+          type="button"
+          class="btn btn-outline-primary refresh-button"
+          (click)="refresh$.next()">Refresh</button>
+</form>
+<div class="scrollable-wrapper">
+  <virtual-scroller class="scrollable" #scroll [items]="data$ | async" [compareItems]="comparer" [enableUnequalChildrenSizes]="true">
+    <app-sensor-list-item class="col-md-2 el" *ngFor="let entity of scroll.viewPortItems; trackBy: trackBySensor"
+                          [attr.data-key]="entity.key"
+                          [entity]="entity"
+                          (click)="navigate(entity)"></app-sensor-list-item>
+  </virtual-scroller>
+</div>
+

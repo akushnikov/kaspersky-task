@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 100%;
+}
+
+.controls {
+  margin-bottom: 1em;
+
+  .refresh-button {
+    margin-left: 2em;
+  }
+}
+
+.scrollable-wrapper {
+  display: flex;
+  flex: 1;
+  position: relative;
+
+  .scrollable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .el {
+      max-height: 36px;
+    }
+  }
+}
+
+::ng-deep {
+  .scrollable-content {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+}
+
